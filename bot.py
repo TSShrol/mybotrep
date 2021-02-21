@@ -30,7 +30,8 @@ class BotHandler:
 
         return last_update
 
-greet_bot = BotHandler('1605637847:AAFv0N2c3oCVXCnshgGT1sos6gjVvpCoZR8') #token
+tocken="1605637847:AAFv0N2c3oCVXCnshgGT1sos6gjVvpCoZR8"
+greet_bot = BotHandler(tocken) #token
 greetings = ('привіт', 'доброго дня', 'ку-ку', 'hello')
 now = datetime.datetime.now()
 
@@ -50,14 +51,15 @@ def main():
         last_chat_id = last_update['message']['chat']['id']
         last_chat_name = last_update['message']['chat']['first_name']
 
-        if last_chat_text.lower() in greetings and today == now.day and 6 <= hour < 12:
-            greet_bot.send_message(last_chat_id, 'Доброго ранку, {}'.format(last_chat_name))
+        if last_chat_text.lower() in greetings and today == now.day and 0 <= hour < 6:
+            greet_bot.send_message(last_chat_id, 'Доброї ночі, {}'.format(last_chat_name))
             today += 1
-
         elif last_chat_text.lower() in greetings and today == now.day and 12 <= hour < 17:
             greet_bot.send_message(last_chat_id, 'Доброго дня, {}'.format(last_chat_name))
             today += 1
-
+        elif last_chat_text.lower() in greetings and today == now.day and 12 <= hour < 17:
+            greet_bot.send_message(last_chat_id, 'Доброго дня, {}'.format(last_chat_name))
+            today += 1
         elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour < 23:
             greet_bot.send_message(last_chat_id, 'Доброго вечора, {}'.format(last_chat_name))
             today += 1
